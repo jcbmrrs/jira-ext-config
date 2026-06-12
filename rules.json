@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "updated": "2026-06-11",
+  "rules": [
+    {
+      "id": "hide-header",
+      "label": "Hide Jira header",
+      "group": "Page chrome",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "hide", "selector": "header#header" }
+      ]
+    },
+    {
+      "id": "banner-issue-link",
+      "label": "Replace welcome banner with issue link",
+      "group": "Page chrome",
+      "enabledByDefault": true,
+      "actions": [
+        {
+          "type": "custom",
+          "handler": "bannerRewrite",
+          "params": {
+            "bannerSelector": "#announcement-banner > div",
+            "keySelector": "a.issue-link#key-val",
+            "summarySelector": "#summary-val h2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hide-issue-search-header",
+      "label": "Hide issue-search header",
+      "group": "Page chrome",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "hide", "selector": ".issue-search-header" }
+      ]
+    },
+    {
+      "id": "silver-none-details",
+      "label": "Grey out 'None' detail rows",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        {
+          "type": "setStyle",
+          "selector": "#issuedetails li.item, #customfieldmodule li.item",
+          "when": { "descendantTextEquals": "None" },
+          "styles": { "color": "silver" }
+        }
+      ]
+    },
+    {
+      "id": "priority-right",
+      "label": "Move Priority to 2nd column",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "addClass", "selector": "#issuedetails li.item.new", "classes": ["item-right"] }
+      ]
+    },
+    {
+      "id": "labels-right",
+      "label": "Move Labels to 2nd column",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "removeClass", "selector": "#issuedetails li.item:has(#wrap-labels)", "classes": ["full-width"] },
+        { "type": "addClass", "selector": "#issuedetails li.item:has(#wrap-labels)", "classes": ["item-right"] }
+      ]
+    },
+    {
+      "id": "issuedetails-border",
+      "label": "Add Issue Details separation border",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "setStyle", "selector": "#issuedetails", "styles": { "border-bottom": "1px solid silver" } }
+      ]
+    },
+    {
+      "id": "customfields-two-cols",
+      "label": "Two-column custom fields",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "addClass", "selector": "#customfield-panel-1 > ul.property-list", "classes": ["two-cols"] }
+      ]
+    },
+    {
+      "id": "pfa-bold",
+      "label": "Bold Primary Functional Area",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "setStyle", "selector": "#rowForcustomfield_17133", "styles": { "font-weight": "800" } }
+      ]
+    },
+    {
+      "id": "sfa-bold",
+      "label": "Bold Secondary Functional Area",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "setStyle", "selector": "#rowForcustomfield_17400", "styles": { "font-weight": "700" } }
+      ]
+    },
+    {
+      "id": "sfa-right",
+      "label": "Move Secondary Functional Area to 2nd column",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "addClass", "selector": "#rowForcustomfield_17400", "classes": ["item-right"] }
+      ]
+    },
+    {
+      "id": "sprint-right",
+      "label": "Move Sprint to 2nd column",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "addClass", "selector": "#rowForcustomfield_10000", "classes": ["item-right"] }
+      ]
+    },
+    {
+      "id": "parentlink-right",
+      "label": "Move Parent Link to 2nd column",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "addClass", "selector": "#rowForcustomfield_11205", "classes": ["item-right"] }
+      ]
+    },
+    {
+      "id": "snow-short-right",
+      "label": "Shorten ServiceNow label + 2nd column",
+      "group": "Custom fields",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "addClass", "selector": "#rowForcustomfield_10525", "classes": ["item-right"] },
+        {
+          "type": "replaceText",
+          "selector": "#rowForcustomfield_10525 label[for=\"customfield_10525\"]",
+          "from": "Service Now Ticket Number:",
+          "to": "ServiceNow #:"
+        }
+      ]
+    },
+    {
+      "id": "silver-none-dd",
+      "label": "Grey out 'None' people/date fields",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        {
+          "type": "setStyle",
+          "selector": "dd",
+          "when": { "textEquals": "None" },
+          "styles": { "color": "silver" }
+        }
+      ]
+    },
+    {
+      "id": "goaldate-large",
+      "label": "Enlarge + bold Goal Date",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        {
+          "type": "setStyle",
+          "selector": "dt:has(label[for=\"customfield_16403\"])",
+          "styles": { "font-weight": "bold", "font-size": "1.5em", "line-height": "24px" }
+        },
+        {
+          "type": "setStyle",
+          "selector": "dd:has(#customfield_16403-val)",
+          "styles": { "font-weight": "bold", "font-size": "1.5em", "line-height": "24px" }
+        }
+      ]
+    },
+    {
+      "id": "goaldate-red-none",
+      "label": "Dark-red Goal Date when 'None'",
+      "group": "Details styling",
+      "enabledByDefault": true,
+      "actions": [
+        {
+          "type": "custom",
+          "handler": "goalDateRedNone",
+          "params": {
+            "ddSelector": "dd:has(#customfield_16403-val)",
+            "valSelector": "#customfield_16403-val",
+            "color": "darkred"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hide-structure",
+      "label": "Hide Structure module",
+      "group": "Cleanup",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "hide", "selector": "#structuremodule" }
+      ]
+    },
+    {
+      "id": "hide-sort-button",
+      "label": "Hide 'Newest first' sort button",
+      "group": "Cleanup",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "hide", "selector": ".sortwrap" }
+      ]
+    },
+    {
+      "id": "hide-devstatus",
+      "label": "Hide Development module",
+      "group": "Cleanup",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "hide", "selector": "#viewissue-devstatus-panel" }
+      ]
+    }
+  ]
+}
