@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-11",
+  "updated": "2026-06-12",
   "rules": [
     {
       "id": "hide-header",
@@ -151,7 +151,7 @@
     {
       "id": "silver-none-dd",
       "label": "Grey out 'None' people/date fields",
-      "group": "Details styling",
+      "group": "People / Date Fields",
       "enabledByDefault": true,
       "actions": [
         {
@@ -165,7 +165,7 @@
     {
       "id": "goaldate-large",
       "label": "Enlarge + bold Goal Date",
-      "group": "Details styling",
+      "group": "People / Date Fields",
       "enabledByDefault": true,
       "actions": [
         {
@@ -183,7 +183,7 @@
     {
       "id": "goaldate-red-none",
       "label": "Dark-red Goal Date when 'None'",
-      "group": "Details styling",
+      "group": "People / Date Fields",
       "enabledByDefault": true,
       "actions": [
         {
@@ -198,31 +198,72 @@
       ]
     },
     {
-      "id": "hide-structure",
-      "label": "Hide Structure module",
+      "id": "remove-structure",
+      "label": "Remove Structure module",
       "group": "Cleanup",
       "enabledByDefault": true,
       "actions": [
-        { "type": "hide", "selector": "#structuremodule" }
+        { "type": "remove", "selector": "#structuremodule" }
       ]
     },
     {
-      "id": "hide-sort-button",
-      "label": "Hide 'Newest first' sort button",
+      "id": "remove-resolution",
+      "label": "Remove Resolution row",
       "group": "Cleanup",
       "enabledByDefault": true,
       "actions": [
-        { "type": "hide", "selector": ".sortwrap" }
+        { "type": "remove", "selector": "li:has(#resolution-val)" }
       ]
     },
     {
-      "id": "hide-devstatus",
-      "label": "Hide Development module",
+      "id": "remove-fixversion",
+      "label": "Remove Fix Version row",
       "group": "Cleanup",
       "enabledByDefault": true,
       "actions": [
-        { "type": "hide", "selector": "#viewissue-devstatus-panel" }
+        { "type": "remove", "selector": "li:has(#fixfor-val)" }
       ]
+    },
+    {
+      "id": "remove-banner-border",
+      "label": "Remove Banner Border",
+      "group": "Cleanup",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "custom", "handler": "removeBannerBorder", "params": { "selector": "#announcement-banner > div" } }
+      ]
+    },
+    {
+      "id": "hide-votes",
+      "label": "Hide Votes field",
+      "group": "Cleanup",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "hide", "selector": "dt:has(#voters-modal-label), dd:has(#view-voter-list)" }
+      ]
+    },
+    {
+      "id": "remove-devstatus",
+      "label": "Remove Development module",
+      "group": "Cleanup",
+      "enabledByDefault": true,
+      "actions": [
+        { "type": "remove", "selector": "#viewissue-devstatus-panel" }
+      ]
+    },
+    {
+      "id": "btn-nav",
+      "label": "Nav button",
+      "group": "In-page Buttons",
+      "enabledByDefault": true,
+      "actions": []
+    },
+    {
+      "id": "btn-search",
+      "label": "Search button",
+      "group": "In-page Buttons",
+      "enabledByDefault": true,
+      "actions": []
     }
   ]
 }
